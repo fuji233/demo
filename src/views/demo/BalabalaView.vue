@@ -1,0 +1,601 @@
+<script lang="ts" setup>
+
+function getAssetsImage(name: String) {
+    return new URL(`/src/assets/images/${name}`, import.meta.url).href;
+}
+
+</script>
+
+<template>
+
+    <!-- 
+        >>> 容器 >>>
+     -->
+    <el-container>
+        <!-- 
+            >>> header >>>
+         -->
+         <el-header>
+            <!-- 
+                >>> header 导航栏 >>>
+             -->
+            <div class="bala-h-nav">
+                <el-menu
+                    mode="horizantal"
+                    class="el-menu-demo"
+                    :ellipsis="false"
+                >
+                    <ul class="bala-h-nav-left">
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="zhuzhan-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.73252 2.67094C3.33229 2.28484 3.33229 1.64373 3.73252 1.25764C4.11291 0.890684 4.71552 0.890684 5.09591 1.25764L7.21723 3.30403C7.27749 3.36218 7.32869 3.4261 7.37081 3.49407H10.5789C10.6211 3.4261 10.6723 3.36218 10.7325 3.30403L12.8538 1.25764C13.2342 0.890684 13.8368 0.890684 14.2172 1.25764C14.6175 1.64373 14.6175 2.28484 14.2172 2.67094L13.364 3.49407H14C16.2091 3.49407 18 5.28493 18 7.49407V12.9996C18 15.2087 16.2091 16.9996 14 16.9996H4C1.79086 16.9996 0 15.2087 0 12.9996V7.49406C0 5.28492 1.79086 3.49407 4 3.49407H4.58579L3.73252 2.67094ZM4 5.42343C2.89543 5.42343 2 6.31886 2 7.42343V13.0702C2 14.1748 2.89543 15.0702 4 15.0702H14C15.1046 15.0702 16 14.1748 16 13.0702V7.42343C16 6.31886 15.1046 5.42343 14 5.42343H4ZM5 9.31747C5 8.76519 5.44772 8.31747 6 8.31747C6.55228 8.31747 7 8.76519 7 9.31747V10.2115C7 10.7638 6.55228 11.2115 6 11.2115C5.44772 11.2115 5 10.7638 5 10.2115V9.31747ZM12 8.31747C11.4477 8.31747 11 8.76519 11 9.31747V10.2115C11 10.7638 11.4477 11.2115 12 11.2115C12.5523 11.2115 13 10.7638 13 10.2115V9.31747C13 8.76519 12.5523 8.31747 12 8.31747Z" fill="currentColor" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"></path></svg>
+                            <span>首页</span>
+                        </li>
+                        <li><span>番剧</span></li>
+                        <li><span>直播</span></li>
+                        <li><span>游戏中心</span></li>
+                        <li><span>会员购</span></li>
+                        <li><span>漫画</span></li>
+                        <li><span>赛事</span></li>
+                        <li><span>(滚动)</span></li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="download-client-trigger__icon"><path d="M7.23181 8.65895V1.75796C7.23181 1.33935 7.57582 1 8.00018 1C8.42453 1 8.76854 1.33935 8.76854 1.75796V8.67097L9.98589 7.47009C10.286 7.17409 10.7725 7.17409 11.0725 7.47009C11.3726 7.7661 11.3726 8.24601 11.0725 8.54201L8.54958 11.0308C8.24952 11.3268 7.76302 11.3268 7.46295 11.0308L4.94002 8.54201C4.63995 8.24601 4.63995 7.7661 4.94002 7.47009C5.24008 7.17409 5.72658 7.17409 6.02665 7.47009L7.23181 8.65895Z" fill="currentColor" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"></path><path d="M3.48023 4.29936C2.40686 4.29936 1.53672 5.15772 1.53672 6.21656V11.5669C1.53672 12.6257 2.40686 13.4841 3.48023 13.4841H12.5198C13.5931 13.4841 14.4633 12.6257 14.4633 11.5669V6.21656C14.4633 5.15772 13.5931 4.29936 12.5198 4.29936H11.6158C11.1915 4.29936 10.8475 3.96001 10.8475 3.5414C10.8475 3.12279 11.1915 2.78344 11.6158 2.78344H12.5198C14.4418 2.78344 16 4.3205 16 6.21656V11.5669C16 13.4629 14.4418 15 12.5198 15H3.48023C1.55815 15 0 13.4629 0 11.5669V6.21656C0 4.3205 1.55815 2.78344 3.48023 2.78344H4.38418C4.80853 2.78344 5.15254 3.12279 5.15254 3.5414C5.15254 3.96001 4.80853 4.29936 4.38418 4.29936H3.48023Z" fill="currentColor" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"></path></svg>
+                            <span>下载客户端</span>
+                        </li>
+                    </ul>
+                    <div class="bala-h-nav-search">
+                        <el-input
+                            placeholder="(滚动热点)"
+                        >
+                            <template #append>
+                                <el-icon><Search /></el-icon>
+                            </template>
+                        </el-input>
+                    </div>
+                    <ul class="bala-h-nav-right">
+                            <li><span>(头像)</span></li>
+                            <li class="bt-column">  
+                                    <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg" class="right-entry-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M11 1.74286C6.02955 1.74286 2 5.7724 2 10.7429C2 15.7133 6.02955 19.7429 11 19.7429C15.9705 19.7429 20 15.7133 20 10.7429C20 5.7724 15.9705 1.74286 11 1.74286ZM11.0003 3.37912C15.0609 3.37912 18.3639 6.68212 18.3639 10.7428C18.3639 14.8034 15.0609 18.1064 11.0003 18.1064C6.93963 18.1064 3.63663 14.8034 3.63663 10.7428C3.63663 6.68212 6.93963 3.37912 11.0003 3.37912Z" fill="currentColor" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M9.57596 6.88109C9.76987 7.228 9.91387 7.60028 10.0047 7.98564V7.98564C10.0734 8.34728 10.0481 8.71873 9.93023 9.06728V9.06728C9.04905 9.27264 8.14905 9.39291 7.24496 9.42809V9.42809C7.22369 9.42809 7.19832 9.49355 7.17051 9.62446V9.62446C7.18851 10.0172 7.30714 10.3968 7.5166 10.729V10.729C7.72278 10.9908 7.83732 10.8771 8.07705 10.8035V10.8035C8.55978 10.6611 9.06541 10.6055 9.56778 10.639V10.639C9.74123 10.7535 8.95905 11.8425 8.74387 12.1698V12.1698C8.52951 12.4979 7.68187 13.5525 7.24496 13.7006V13.7006C6.80887 13.8471 6.91605 14.0852 7.31941 14.3969V14.3969C7.75387 14.6481 8.28323 14.6775 8.74387 14.4787V14.4787C9.15132 14.2693 9.48678 13.9445 9.70769 13.5444V13.5444C9.83941 13.2171 10.8777 10.8599 11.0012 10.6472V10.6472C11.1248 10.4345 11.2982 10.3854 11.5625 10.2945V10.2945C12.2326 10.0982 12.9313 10.0147 13.6292 10.0491V10.0491C14.2061 10.1481 14.7002 10.1718 14.7583 9.62364V9.62364C14.8197 9.11473 14.5783 8.61728 14.1406 8.34646V8.34646C13.6022 8.25482 13.0483 8.31455 12.5427 8.51828V8.51828C12.2948 8.60091 11.6443 8.89464 11.5625 8.821V8.821C11.4799 8.74818 11.7761 8.05109 11.4799 7.471V7.471C11.1763 6.97437 10.638 6.66591 10.0538 6.65118V6.65118C9.6676 6.65118 9.51051 6.832 9.57596 6.88109V6.88109Z" fill="currentColor" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4674 11.4647C11.3856 11.5555 11.3782 11.6905 11.451 11.7887V11.7887C11.5255 11.9106 14.0209 14.1099 14.3089 14.3447V14.3447C14.5969 14.5795 14.7295 14.4994 15.0322 13.5339V13.5339C15.3374 12.5676 13.8303 12.0325 13.386 11.8133V11.8133C12.9377 11.6218 12.468 11.486 11.9861 11.4083V11.4083C11.9207 11.4042 11.8356 11.396 11.7505 11.396V11.396C11.6408 11.396 11.532 11.4099 11.4674 11.4647V11.4647Z" fill="currentColor" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"></path></svg>
+                                    <span>大会员</span>
+                            </li>
+                            <li class="bt-column">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="right-entry-icon"><path d="M15.435 17.7717H4.567C2.60143 17.7717 1 16.1723 1 14.2047V5.76702C1 3.80144 2.59942 2.20001 4.567 2.20001H15.433C17.3986 2.20001 19 3.79943 19 5.76702V14.2047C19.002 16.1703 17.4006 17.7717 15.435 17.7717ZM4.567 4.00062C3.59327 4.00062 2.8006 4.79328 2.8006 5.76702V14.2047C2.8006 15.1784 3.59327 15.9711 4.567 15.9711H15.433C16.4067 15.9711 17.1994 15.1784 17.1994 14.2047V5.76702C17.1994 4.79328 16.4067 4.00062 15.433 4.00062H4.567Z" fill="currentColor" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"></path><path d="M9.99943 11.2C9.51188 11.2 9.02238 11.0667 8.59748 10.8019L8.5407 10.7635L4.3329 7.65675C3.95304 7.37731 3.88842 6.86226 4.18996 6.50976C4.48954 6.15544 5.0417 6.09699 5.4196 6.37643L9.59412 9.45943C9.84279 9.60189 10.1561 9.60189 10.4067 9.45943L14.5812 6.37643C14.9591 6.09699 15.5113 6.15544 15.8109 6.50976C16.1104 6.86409 16.0478 7.37731 15.6679 7.65675L11.4014 10.8019C10.9765 11.0667 10.487 11.2 9.99943 11.2Z" fill="currentColor" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"></path></svg>
+                                <span>消息</span>
+                            </li>
+                            <li class="bt-column">
+                                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg" class="right-entry-icon"><g clip-path="url(#clip0)"><path d="M10 10.743C7.69883 10.743 5.83333 8.87747 5.83333 6.5763C5.83333 4.27512 7.69883 2.40964 10 2.40964V10.743Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;"></path><path d="M10 10.743C10 13.0441 8.1345 14.9096 5.83333 14.9096C3.53217 14.9096 1.66667 13.0441 1.66667 10.743H10Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;"></path><path d="M10 10.743C10 8.44182 11.8655 6.57632 14.1667 6.57632C16.4679 6.57632 18.3333 8.44182 18.3333 10.743H10Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;"></path><path d="M9.99999 10.743C12.3012 10.743 14.1667 12.6085 14.1667 14.9096C14.1667 17.2108 12.3012 19.0763 9.99999 19.0763V10.743Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;"></path></g><defs><clipPath id="clip0"><rect width="20" height="20" fill="currentColor" transform="matrix(-1 0 0 1 20 0.742981)" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"></rect></clipPath></defs></svg>
+                                <span>动态</span>
+                            </li>
+                            <li class="bt-column">
+                                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg" class="right-entry-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.0505 3.16759L12.7915 6.69573C12.954 7.02647 13.2702 7.25612 13.6349 7.30949L17.5294 7.87474C18.448 8.00817 18.8159 9.13785 18.1504 9.78639L15.3331 12.5334C15.0686 12.7905 14.9481 13.1609 15.0104 13.5256L15.6759 17.4031C15.8328 18.3184 14.8721 19.0171 14.0497 18.5845L10.5661 16.7537C10.2402 16.5823 9.85042 16.5823 9.52373 16.7537L6.04087 18.5845C5.21848 19.0171 4.2578 18.3184 4.41468 17.4031L5.07939 13.5256C5.14166 13.1609 5.02198 12.7905 4.75755 12.5334L1.9394 9.78639C1.27469 9.13785 1.64182 8.00817 2.56126 7.87474L6.4549 7.30949C6.82041 7.25612 7.13578 7.02647 7.29832 6.69573L9.04015 3.16759C9.45095 2.33468 10.6389 2.33468 11.0505 3.16759Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;"></path><path d="M11.603 11.8739C11.413 12.5556 10.7871 13.0554 10.0447 13.0554C9.29592 13.0554 8.66679 12.5467 8.48242 11.8569" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;"></path></svg>
+                                <span>收藏</span>
+                            </li>
+                            <li class="bt-column">
+                                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg" class="right-entry-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 1.74286C5.02955 1.74286 1 5.7724 1 10.7429C1 15.7133 5.02955 19.7429 10 19.7429C14.9705 19.7429 19 15.7133 19 10.7429C19 5.7724 14.9705 1.74286 10 1.74286ZM10.0006 3.379C14.0612 3.379 17.3642 6.68282 17.3642 10.7426C17.3642 14.8033 14.0612 18.1063 10.0006 18.1063C5.93996 18.1063 2.63696 14.8033 2.63696 10.7426C2.63696 6.68282 5.93996 3.379 10.0006 3.379Z" fill="currentColor" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"></path><path d="M9.99985 6.6521V10.743" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;"></path><path d="M12.4545 10.7427H10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;"></path></svg>
+                                <span>历史</span>
+                            </li>
+                            <li class="bt-column">
+                                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg" class="right-entry-icon"><mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="2" y="1" width="16" height="20"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 1.74286H17.5V20.0762H2.5V1.74286Z" fill="currentColor" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"></path></mask><g mask="url(#mask0)"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.99999 1.74286C9.92916 1.74286 9.85916 1.74369 9.78833 1.74536C5.85416 1.85453 2.58416 5.14869 2.50166 9.08286C2.44999 11.5404 3.58666 13.7304 5.36999 15.1337C5.52166 15.2529 5.63166 15.4162 5.67333 15.6045L6.30416 18.447C6.51583 19.3987 7.36083 20.0762 8.33583 20.0762H11.6617C12.6383 20.0762 13.4842 19.3987 13.6958 18.4445L14.3275 15.602C14.3692 15.4154 14.4775 15.2537 14.6275 15.1354C16.3733 13.7629 17.5 11.637 17.5 9.24286C17.5 5.10036 14.1425 1.74286 9.99999 1.74286ZM10.0003 3.40939C13.2161 3.40939 15.8336 6.02606 15.8336 9.24273C15.8336 11.0386 15.0186 12.7086 13.5978 13.8252C13.1428 14.1827 12.8244 14.6852 12.7011 15.2402L12.0686 18.0827C12.0269 18.2752 11.8586 18.4094 11.6619 18.4094H8.33609C8.14109 18.4094 7.97359 18.2761 7.93192 18.0852L7.30025 15.2427C7.17609 14.6869 6.85775 14.1827 6.40109 13.8236C4.94359 12.6769 4.12942 10.9619 4.16859 9.11773C4.23192 6.05523 6.77442 3.49606 9.83442 3.41189C9.88942 3.41023 9.94525 3.40939 10.0003 3.40939Z" fill="currentColor" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"></path><path d="M10 6.81299L8.81253 9.18726H11.1875L9.99952 11.561" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;"></path></g><path d="M6.66656 15.9095H13.3332" stroke="currentColor" stroke-width="1.7" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;"></path></svg>
+                                <span>创作中心</span>
+                            </li>
+                            <li class="bt-column">
+                                <span>(icon)投稿</span>
+                            </li>
+
+                    </ul>
+                </el-menu>
+            </div>
+            <!-- 
+                <<< header 导航栏 <<<
+             -->
+            <!-- 
+                >>> header 标语区 >>>
+             -->
+            <div class="bala-h-banner"></div>
+            <!-- 
+                <<< header 标语区 <<<
+             -->
+         </el-header>
+        <!-- 
+            <<< header <<<
+         -->
+        <!-- 
+            >>> main >>>
+         -->
+        <el-main>
+            <!-- 
+                >>> main 导航栏 >>>
+             -->
+            <div class="bala-m-nav">
+                <!-- 
+                    >>> main 导航(左) >>>
+                 -->
+                <div class="bala-m-nav-left">
+                    <el-row :gutter=20>
+                        <el-col span="8">
+                            <a class="bt-column">
+                                <div class="border-round flex-center" style="width: 46px; height: 46px; background-color: blue;">
+                                    <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="channel-icon dynamic"><path d="M6.41659 15.625C3.88528 15.625 1.83325 13.7782 1.83325 11.5H10.9999C10.9999 13.7782 8.94789 15.625 6.41659 15.625Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:#e8e6e3;"></path><path d="M15.125 16.0827C15.125 18.614 13.2782 20.666 11 20.666L11 11.4993C13.2782 11.4993 15.125 13.5514 15.125 16.0827Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:#e8e6e3;"></path><path d="M6.875 6.91667C6.875 9.44797 8.72183 11.5 11 11.5L11 2.33333C8.72182 2.33333 6.875 4.38536 6.875 6.91667Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:#e8e6e3;"></path><path d="M15.5833 7.375C13.052 7.375 11 9.22183 11 11.5H20.1667C20.1667 9.22183 18.1146 7.375 15.5833 7.375Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:#e8e6e3;"></path></svg>
+                                </div>
+                                <span>动态</span>
+                            </a>
+                        </el-col>
+                        <el-col span="8">
+                            <a class="bt-column">
+                                <div class="border-round flex-center" style="width: 46px; height: 46px; background-color: red">
+                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="channel-icon popular"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.89054 17.272L4.89277 17.2742C6.49674 18.8782 8.66472 19.7888 10.9624 19.7888C13.2503 19.7888 15.2113 19.0539 16.6107 17.6108L16.6108 17.6108L16.6128 17.6086C18.0002 16.1345 18.7835 14.182 18.7421 12.1819C18.7852 11.3835 18.6916 9.36321 17.4088 6.75488L17.4082 6.7537C17.209 6.35523 16.8163 6.06598 16.3391 5.96993C15.8904 5.87103 15.4021 6.01997 15.061 6.35741C14.9094 6.48781 14.7796 6.61755 14.6655 6.7317L14.6637 6.73348L14.6329 6.76426C14.2107 3.35588 12.6083 1.7368 11.1654 1.00465C11.148 0.987812 11.1265 0.967972 11.1036 0.950782C11.0775 0.931205 11.0311 0.900467 10.9694 0.888912C10.2276 0.608301 9.41043 1.01168 9.1237 1.77629L9.12314 1.7778C8.50566 3.46558 7.35287 4.62281 6.16627 5.76704C4.51756 7.33121 2.75938 9.03623 2.80163 12.093C2.75906 14.055 3.54464 15.8826 4.89054 17.272ZM3.04999 13.0648C3.01092 12.7459 2.99439 12.4218 3.00168 12.0939C2.95933 9.12977 4.6531 7.47834 6.30453 5.9116C7.49017 4.76831 8.67581 3.58267 9.31098 1.84655C9.56504 1.16904 10.2849 0.830288 10.9201 1.08435C10.9624 1.08435 11.0048 1.1267 11.0471 1.16904C11.9267 1.60884 12.8853 2.39635 13.5753 3.77299C12.8853 2.39633 11.9267 1.6088 11.0471 1.16901C11.0047 1.12666 10.9624 1.08432 10.9201 1.08432C10.2849 0.830251 9.56503 1.16901 9.31097 1.84651C8.6758 3.58263 7.49016 4.76827 6.30452 5.91157C4.65309 7.47831 2.95932 9.12973 3.00166 12.0938C2.99438 12.4218 3.01092 12.7459 3.04999 13.0648ZM14.477 7.18189C14.477 7.1819 14.477 7.18192 14.477 7.18193C14.5828 7.09724 14.6887 6.99138 14.8052 6.87493C14.9216 6.75849 15.0486 6.63146 15.1968 6.50442C15.4932 6.20801 15.9167 6.08098 16.2978 6.16567C16.7212 6.25036 17.06 6.50443 17.2294 6.84318C17.3088 7.0046 17.3835 7.16371 17.4539 7.32035C17.3835 7.1637 17.3087 7.00458 17.2294 6.84314C17.06 6.50439 16.7212 6.25032 16.2978 6.16563C15.9167 6.08094 15.4932 6.20798 15.1968 6.50439C15.0486 6.63142 14.9216 6.75845 14.8051 6.87489L14.8051 6.8749C14.7557 6.92437 14.7081 6.97191 14.6617 7.01675C14.5988 7.07745 14.5379 7.13318 14.477 7.18189ZM12.6977 6.35925C12.8428 7.15476 12.8833 7.97963 12.8679 8.74864C12.8679 8.79032 12.8704 8.8315 12.8754 8.87195C12.8704 8.83151 12.8679 8.79035 12.8679 8.74867C12.8833 7.97966 12.8428 7.15478 12.6977 6.35925ZM16.7358 10.6654C16.8108 11.1478 16.8483 11.6393 16.8483 12.1362V12.1786C16.8483 13.703 16.2978 15.2274 15.2392 16.3283C14.0535 17.4293 12.5291 18.0221 10.9201 17.9374C9.1416 17.9374 7.44783 17.2175 6.21984 15.9472C5.82743 15.5548 5.50448 15.1119 5.25584 14.6331C5.50447 15.1119 5.82743 15.5548 6.21983 15.9472C7.44782 17.2175 9.14159 17.9373 10.9201 17.9373C12.5291 18.022 14.0535 17.4292 15.2392 16.3283C16.2978 15.2273 16.8483 13.7029 16.8483 12.1785V12.1362C16.8483 11.6393 16.8108 11.1478 16.7358 10.6654ZM10.9306 17.7376C12.4802 17.8192 13.9509 17.2497 15.0989 16.1856C16.1154 15.1261 16.6483 13.655 16.6483 12.1785V12.1362C16.6483 10.8624 16.3969 9.6266 15.8955 8.49474C15.2436 9.11663 14.7845 9.49093 14.4179 9.68717C14.2122 9.79725 14.0268 9.85633 13.846 9.86789C13.6644 9.8795 13.5028 9.84219 13.3473 9.78249C12.9207 9.62211 12.6679 9.20129 12.6679 8.74864V8.74464L12.6679 8.74464C12.6889 7.69735 12.6046 6.55594 12.2954 5.53554C12.01 4.59379 11.5372 3.76766 10.7904 3.20655C9.96581 4.94926 8.72521 6.18561 7.58695 7.28323L7.50836 7.35967C5.97191 8.85397 4.81321 9.98087 4.85306 12.1325L4.85313 12.1362H4.85309C4.85309 13.5239 5.38326 14.8277 6.36125 15.8057L6.36365 15.8081L6.36363 15.8082C7.55387 17.0394 9.19573 17.7374 10.9201 17.7374H10.9306L10.9306 17.7376Z" fill="#ffffff" data-darkreader-inline-fill="" style="--darkreader-inline-fill:#e8e6e3;"></path></svg>
+                                </div>
+                                <span>热门</span>
+                            </a>
+                        </el-col>
+                        <el-col span="8">
+                            <a class="bt-column">
+                                <div class="border-round flex-center" style="width: 46px; height: 46px; background-color: green">
+                                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" class="channel-icon channel"><circle cx="5.6875" cy="14" r="3.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:#e8e6e3;"></circle><circle cx="10.5" cy="5.6875" r="3.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:#e8e6e3;"></circle><circle cx="15.3125" cy="14" r="3.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:#e8e6e3;"></circle></svg>
+                                </div>
+                                <span>频道</span>
+                            </a>
+                        </el-col>
+                    </el-row>
+                </div>
+                <!-- 
+                    <<< main 导航(左) <<<
+                 -->
+                <!-- 
+                    >>> main 导航(中) >>>
+                 -->
+                <div class="bala-m-nav-center">
+                    <el-row :gutter=20>
+                        <el-col :span="1"></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>番剧</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>国创</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>综艺</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>动画</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>鬼畜</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>舞蹈</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>娱乐</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>科技</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>美食</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>汽车</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>运动</el-button></el-col>
+                        <el-col :span="1"></el-col>
+                    </el-row>
+                    <el-row :gutter=20>
+                        <el-col :span="1"></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>电影</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button style="width: 60px; height: 32px">电视剧</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button style="width: 60px; height: 32px">纪录片</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>游戏</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>音乐</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>影视</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>知识</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>资讯</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>生活</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>时尚</el-button></el-col>
+                        <el-col :span="2" class="flex-center"><el-button>更多</el-button></el-col>
+                        <el-col :span="1"></el-col>
+                    </el-row>
+                </div>
+                <!-- 
+                    <<< main 导航(中) <<<
+                 -->
+                <!-- 
+                    >>> main 导航(右) >>>
+                 -->
+                <div class="bala-m-nav-right">
+                    <el-row :gutter=5>
+                        <el-col :span="8">
+                            <el-button size="small" class="border-none">
+                                <svg t="1642646834655" class="icon side-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4061" width="20" height="20"><path d="M810.6496 153.6C843.6736 153.6 870.4 180.3264 870.4 213.3504v597.2992c0 33.024-26.7264 59.7504-59.7504 59.7504H213.3504A59.7504 59.7504 0 0 1 153.6 810.6496V213.3504C153.6 180.3264 180.3264 153.6 213.3504 153.6z m-332.8 460.8H341.3504a34.1504 34.1504 0 0 0 0 68.2496h136.4992a34.1504 34.1504 0 1 0 0-68.2496z m204.8-136.6016H341.3504a34.1504 34.1504 0 0 0 0 68.2496h341.2992a34.1504 34.1504 0 0 0 0-68.2496z m0-136.3968H341.3504a34.1504 34.1504 0 0 0 0 68.2496h341.2992a34.1504 34.1504 0 1 0 0-68.2496z" p-id="4062"></path></svg>
+                                <span>专栏</span>
+                            </el-button>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-button size="small" class="border-none">
+                                <svg t="1642646844599" class="icon side-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4188" width="20" height="20"><path d="M772.4544 229.2736l2.048 6.4512 87.2448 283.136c8.8576 33.1264-10.24 66.56-41.984 78.4384l-6.5536 2.048-118.1696 31.744a32.768 32.768 0 0 1-8.192 1.0752l-4.096-0.2048-124.672-14.6432-193.3824 51.8144 36.6592 136.704a49.152 49.152 0 0 1-93.184 30.8736l-1.792-5.4272L155.2896 267.264a49.152 49.152 0 0 1 93.184-30.8736l1.792 5.4272 4.096 15.36 188.928-50.6368a32.768 32.768 0 0 1 8.1408-1.0752l4.096 0.2048 124.5184 14.592 112.1792-30.0544c33.4336-8.96 68.1984 7.7824 80.2304 39.0144z" p-id="4189"></path></svg>
+                                <span>活动</span>
+                            </el-button>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-button size="small" class="border-none">
+                                <svg t="1642670011510" class="icon side-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3116" width="20" height="20"><path d="M836.3008 170.6496c17.1008 0 31.2832 12.6464 33.7408 29.0816L870.4 204.8v316.16a34.1504 34.1504 0 0 1-29.0816 33.792l-5.0176 0.3584h-102.4v195.7888a34.1504 34.1504 0 0 1-29.1328 33.792l-5.0176 0.3584H386.7648l-127.3344 95.5392a34.2016 34.2016 0 0 1-53.248-17.3568l-1.024-4.8128-0.3584-5.12-0.0512-68.3008H153.6a34.1504 34.1504 0 0 1-32.6656-24.2176l-1.0752-4.8128-0.4096-5.0688v-409.6c0-17.152 12.6464-31.3344 29.0816-33.792L153.6 307.2h174.2336V204.8c0-17.152 12.6464-31.3344 29.1328-33.792l5.0176-0.3584h474.3168z m-477.9008 409.6H256l-5.0688 0.4096a34.1504 34.1504 0 0 0 0 67.4816l5.0688 0.4096h102.4l5.0688-0.4096A34.1504 34.1504 0 0 0 358.4 580.2496z m102.4-136.4992H256l-5.0688 0.4096a34.1504 34.1504 0 0 0 0 67.4816l5.0688 0.4096h204.8l5.0688-0.4096A34.1504 34.1504 0 0 0 460.8 443.7504z m341.2992-204.8512h-406.016v68.2496h303.616c17.152 0 31.3856 12.6464 33.792 29.1328l0.3584 5.0176v145.4592l68.2496 0.0512V238.8992z" p-id="3117"></path></svg>
+                                <span>社区中心</span>
+                            </el-button>
+                        </el-col>
+                    </el-row>
+                    <el-row :gutter=5>
+                        <el-col :span="8">
+                            <el-button size="small" class="border-none">
+                                <svg t="1642646710703" class="icon side-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3158" width="20" height="20"><path d="M682.6496 204.8512c35.4816 0 64.6656 27.136 67.9424 61.696l0.3072 6.6048V358.4l81.92-61.44a34.2016 34.2016 0 0 1 53.248 17.408l1.024 4.7616 0.3584 5.12v392.5504a34.1504 34.1504 0 0 1-50.2784 30.1056l-4.352-2.7648-81.92-61.4912v68.3008c0 33.1264-23.552 60.7232-54.8352 66.9696l-6.8608 1.024-6.5536 0.256H204.8a68.2496 68.2496 0 0 1-67.9936-61.696l-0.3072-6.5536V273.152c0-35.4816 27.136-64.6656 61.696-67.9936L204.8 204.8512h477.8496zM385.3824 389.12a34.1504 34.1504 0 0 0-34.0992 34.1504v179.6096a34.1504 34.1504 0 0 0 53.0432 28.416l134.7584-89.8048a34.1504 34.1504 0 0 0 0-56.832L404.3264 394.8544a34.1504 34.1504 0 0 0-18.944-5.7344z" p-id="3159"></path></svg>
+                                <span>直播</span>
+                            </el-button>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-button size="small" class="border-none">
+                                <svg t="1642669966795" class="icon side-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2862" width="20" height="20"><path d="M749.2096 168.96a102.4 102.4 0 0 1 102.2464 96.3584l0.1536 6.0416v477.8496a102.4 102.4 0 0 1-96.3584 102.2464l-6.0416 0.1536H271.36a102.4 102.4 0 0 1-102.2464-96.3584l-0.1536-6.0416V271.36a102.4 102.4 0 0 1 96.3584-102.2464L271.36 168.96h477.8496z m-69.9392 385.4848a34.1504 34.1504 0 0 0-48.2816 0 170.6496 170.6496 0 0 1-241.3568 0 34.1504 34.1504 0 1 0-48.2816 48.2304 238.9504 238.9504 0 0 0 337.92 0 34.1504 34.1504 0 0 0 0-48.2304zM322.56 339.6608a51.2 51.2 0 0 0-51.2 51.2v34.1504a51.2 51.2 0 1 0 102.4 0v-34.1504a51.2 51.2 0 0 0-51.2-51.2z m375.4496 0a51.2 51.2 0 0 0-51.2 51.2v34.1504a51.2 51.2 0 1 0 102.4 0v-34.1504a51.2 51.2 0 0 0-51.2-51.2z" p-id="2863"></path></svg>
+                                <span>课堂</span>
+                            </el-button>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-button size="small" class="border-none">
+                                <svg t="1642669999866" class="icon side-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2989" width="20" height="20"><path d="M783.36 221.8496a102.4 102.4 0 0 1 102.0928 94.7712l0.3072 7.68v409.6a102.4 102.4 0 0 1-94.72 102.0928l-7.68 0.256H237.2096a102.4 102.4 0 0 1-102.0928-94.72l-0.3072-7.68v-409.6A102.4 102.4 0 0 1 229.5808 222.208l7.68-0.3072H783.36z m-155.5968 81.408a34.1504 34.1504 0 0 0-50.7904 23.6032l-54.1696 203.3152a128 128 0 1 0-108.288 220.8256l6.7584 1.024a128 128 0 0 0 141.5168-104.8576l71.7824-253.7984 47.4624 35.4816 3.2768 2.2016a34.1504 34.1504 0 0 0 37.5808-56.832l-91.8528-68.7616z" p-id="2990"></path></svg>
+                                <span>新歌热榜</span>
+                            </el-button>
+                        </el-col>
+                    </el-row>
+                </div>
+                <!-- 
+                    <<< main 导航(右) <<<
+                 -->
+            </div>
+            <!-- 
+                <<< main 导航栏 <<<
+             -->
+            <!-- 
+                >>> main 内容区 >>>
+             -->
+            <div class="bala-m-content">
+                <!-- 
+                    >>> 主页视频 >>>
+                 -->
+                <div class="index-video">
+                    <el-row>
+                        <el-col :span="9">
+                            <div class="block text-center">
+                                <el-carousel height="300px">
+                                    <el-carousel-item v-for="item in 4" :key="item">
+                                        <h3 class="small justify-center" text="2xl">{{ item }}</h3>
+                                    </el-carousel-item>
+                                </el-carousel>
+                                <span class="demonstration"
+                                >
+                                    标题
+                                </span>
+                            </div>
+                        </el-col>
+                        <el-col :span="1"></el-col>
+                        <el-col :span="4">
+                            <el-row>
+                                <el-col :span="24">
+                                    <a>
+                                        <el-image
+                                            :src="getAssetsImage('img_video_demo.png')"
+                                            fit="fill"
+                                            style="width: 264px; height: 149px;"
+                                        />
+                                    </a>
+                                    <a>
+                                        <span>视频标题</span>
+                                    </a>
+                                </el-col>
+                                <el-col :span="24">
+                                    <a>
+                                        <el-image
+                                            :src="getAssetsImage('img_video_demo.png')"
+                                            fit="fill"
+                                            style="width: 264px; height: 149px;"
+                                        />
+                                    </a>
+                                    <a>
+                                        <span>视频标题</span>
+                                    </a>
+                                </el-col>
+                            </el-row>
+                        </el-col>
+                        <el-col :span="1"></el-col>
+                        <el-col :span="4">
+                            <el-row>
+                                <el-col :span="24">
+                                    <a>
+                                        <el-image
+                                            :src="getAssetsImage('img_video_demo.png')"
+                                            fit="fill"
+                                            style="width: 264px; height: 149px;"
+                                        />
+                                    </a>
+                                    <a>
+                                        <span>视频标题</span>
+                                    </a>
+                                </el-col>
+                                <el-col :span="24">
+                                    <a>
+                                        <el-image
+                                            :src="getAssetsImage('img_video_demo.png')"
+                                            fit="fill"
+                                            style="width: 264px; height: 149px;"
+                                        />
+                                    </a>
+                                    <a>
+                                        <span>视频标题</span>
+                                    </a>
+                                </el-col>
+                            </el-row>
+                        </el-col>
+                        <el-col :span="1"></el-col>
+                        <el-col :span="4">
+                            <el-row>
+                                <el-col :span="24">
+                                    <a>
+                                        <el-image
+                                            :src="getAssetsImage('img_video_demo.png')"
+                                            fit="fill"
+                                            style="width: 264px; height: 149px;"
+                                        />
+                                    </a>
+                                    <a>
+                                        <span>视频标题</span>
+                                    </a>
+                                </el-col>
+                                <el-col :span="24">
+                                    <!-- 空缺 -->
+                                </el-col>
+                            </el-row>
+                        </el-col>
+                    </el-row>
+                    <el-row style="padding-top: 20px">
+                        <el-col :span="4">
+                            <a>
+                                <el-image
+                                    :src="getAssetsImage('img_video_demo.png')"
+                                    fit="fill"
+                                    style="width: 264px; height: 149px;"
+                                />
+                            </a>
+                            <a>
+                                <span>视频标题</span>
+                            </a>
+                        </el-col>
+                        <el-col :span="1"></el-col>
+                        <el-col :span="4">
+                            <a>
+                                <el-image
+                                    :src="getAssetsImage('img_video_demo.png')"
+                                    fit="fill"
+                                    style="width: 264px; height: 149px;"
+                                />
+                            </a>
+                            <a>
+                                <span>视频标题</span>
+                            </a>
+                        </el-col>
+                        <el-col :span="1"></el-col>
+                        <el-col :span="4">
+                            <a>
+                                <el-image
+                                    :src="getAssetsImage('img_video_demo.png')"
+                                    fit="fill"
+                                    style="width: 264px; height: 149px;"
+                                />
+                            </a>
+                            <a>
+                                <span>视频标题</span>
+                            </a>
+                        </el-col>
+                        <el-col :span="1"></el-col>
+                        <el-col :span="4">
+                            <a>
+                                <el-image
+                                    :src="getAssetsImage('img_video_demo.png')"
+                                    fit="fill"
+                                    style="width: 264px; height: 149px;"
+                                />
+                            </a>
+                            <a>
+                                <span>视频标题</span>
+                            </a>
+                        </el-col>
+                        <el-col :span="1"></el-col>
+                        <el-col :span="4">
+                            <a>
+                                <el-image
+                                    :src="getAssetsImage('img_video_demo.png')"
+                                    fit="fill"
+                                    style="width: 264px; height: 149px;"
+                                />
+                            </a>
+                            <a>
+                                <span>视频标题</span>
+                            </a>
+                        </el-col>
+                    </el-row>
+                </div>
+                <!-- 
+                    <<< 主页视频 <<<
+                 -->
+                 <el-divider />
+                <!-- 
+                    >>> 更多视频 >>>
+                 -->
+                <div class="more-video">
+                    <h3>更多视频</h3>
+                    <el-row>
+                        <el-col :span="4">
+                            <a>
+                                <el-image
+                                    :src="getAssetsImage('img_video_demo.png')"
+                                    fit="fill"
+                                    style="width: 264px; height: 149px;"
+                                />
+                            </a>
+                            <a>
+                                <span>视频标题</span>
+                            </a>
+                        </el-col>
+                        <el-col :span="1"></el-col>
+                        <el-col :span="4">
+                            <a>
+                                <el-image
+                                    :src="getAssetsImage('img_video_demo.png')"
+                                    fit="fill"
+                                    style="width: 264px; height: 149px;"
+                                />
+                            </a>
+                            <a>
+                                <span>视频标题</span>
+                            </a>
+                        </el-col>
+                        <el-col :span="1"></el-col>
+                        <el-col :span="4">
+                            <a>
+                                <el-image
+                                    :src="getAssetsImage('img_video_demo.png')"
+                                    fit="fill"
+                                    style="width: 264px; height: 149px;"
+                                />
+                            </a>
+                            <a>
+                                <span>视频标题</span>
+                            </a>
+                        </el-col>
+                        <el-col :span="1"></el-col>
+                        <el-col :span="4">
+                            <a>
+                                <el-image
+                                    :src="getAssetsImage('img_video_demo.png')"
+                                    fit="fill"
+                                    style="width: 264px; height: 149px;"
+                                />
+                            </a>
+                            <a>
+                                <span>视频标题</span>
+                            </a>
+                        </el-col>
+                        <el-col :span="1"></el-col>
+                        <el-col :span="4">
+                            <a>
+                                <el-image
+                                    :src="getAssetsImage('img_video_demo.png')"
+                                    fit="fill"
+                                    style="width: 264px; height: 149px;"
+                                />
+                            </a>
+                            <a>
+                                <span>视频标题</span>
+                            </a>
+                        </el-col>
+                    </el-row>
+                </div>
+                <!-- 
+                    <<< 更多视频 <<<
+                 -->
+            </div>
+            <!-- 
+                <<< main 内容区 <<<
+             -->
+        </el-main>
+        <!-- 
+            <<< main <<<
+         -->
+        <!-- 
+            >>> 锚点 >>>
+         -->
+         <div>
+            <el-affix position="bottom" offset=250 style="position: absolute; right: 7vh">
+                <el-button style="width: 40px; height: 40px">反馈</el-button>
+            </el-affix>
+            <el-affix position="bottom" offset=200 style="position: absolute; right: 7vh">
+                <el-button style="width: 40px; height: 40px">客服</el-button>
+            </el-affix>
+        </div>
+        <!-- 
+            <<< 锚点 <<<
+         -->
+    </el-container>
+    <!-- 
+        <<< 容器 <<<
+     -->
+
+</template>
+
+<style scoped>
+
+/* 类 */
+ul {
+    padding: 0;
+}
+li {
+    display: inline;
+    list-style-type: none;
+    padding: 0 5px;
+}
+/* 布局 */
+.bala-h-nav button {
+    border: 0;
+}
+.bala-h-nav-right {
+    display: flex;
+}
+.bala-m-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 7%;
+}
+.bala-m-nav-left {
+    display: flex;
+}
+.bala-m-nav-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.bala-m-nav-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid;
+    border-color: black;
+}
+.bala-m-content {
+    padding: 1% 7% 0 7%;
+}
+.index_video {
+    display: flex;
+}
+
+/* 通用 */
+.bt-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.border-round {
+    border-radius: 50%;
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.border-none {
+    border: 0;
+}
+
+.el-container {
+    height: 100vh;
+}
+.el-menu {
+    display: flex;
+    justify-content: space-between;
+    border: 0;
+}
+
+.demonstration {
+color: var(--el-text-color-secondary);
+}
+
+.el-carousel__item h3 {
+color: #475669;
+opacity: 0.75;
+line-height: 150px;
+margin: 0;
+text-align: center;
+}
+
+.el-carousel__item:nth-child(2n) {
+background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+background-color: #d3dce6;
+}
+
+</style>
